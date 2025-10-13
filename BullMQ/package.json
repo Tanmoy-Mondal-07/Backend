@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "bullmq": "^5.61.0"
+    "bullmq": "^5.61.0",
+    "ioredis": "^5.8.1"
   }
 }
