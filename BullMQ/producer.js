@@ -5,6 +5,10 @@ const notifcationQueue = new Queue('email-queue', {
         host: '127.0.0.1',
         port: 6379,
     },
+    defaultJobOptions: {
+        removeOnComplete: true,
+        attempts: 2
+    }
 })
 
 async function init() {
@@ -12,7 +16,7 @@ async function init() {
         email: "me@gmail.com",
         subject: "idk",
         body: "hlo"
-    })
+    }, { priority: 1 })
     console.log(res.id);
 }
 

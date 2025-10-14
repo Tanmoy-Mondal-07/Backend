@@ -15,7 +15,16 @@ const worker = new Worker("email-queue", async (job) => {
     console.log("job data", job.data);
     await sendEmail()
     console.log("email sent");
-}, { connection })
+}, {
+    connection,
+    concurrency: 2,
+    limiter:{
+        max:10,             //only 10 job in a second
+        duration:1000
+    },
+    att
+
+})
 
 
 worker.on('completed', (job) => {
