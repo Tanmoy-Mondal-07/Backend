@@ -15,3 +15,9 @@ const fs = require("fs")
 // })
 
 // fs.appendFileSync('./test.txt', new Date().toLocaleString()) // can use /n for next line
+
+// fs.cpSync("./test.txt", "./copy.txt")
+
+//*********/ unlink for dlt , stat for ..... dot isFile to check if it file
+
+// fs.mkdirSync("docs")
