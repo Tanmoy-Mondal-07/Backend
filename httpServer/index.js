@@ -1,21 +1,16 @@
-const http = require("http")
-const fs = require('fs')
-const url = require('url')
+// const http = require("http")
+const expreess = require('express')
 
-const myServer = http.createServer((req, res) => {
+const app = expreess()
 
-    const log = `${Date.now()}:${req.url} New Req Recived\n`
+app.get('/', (req, res) => {
+    return res.send("home page")
+})
 
-    const myUrl = url.parse(req.url, true)
-    console.log(myUrl);
-    console.log(myUrl.pathname);
+app.get('/about', (req, res) => {
+    return res.send("about page")
+})
 
-    fs.appendFile('log.txt', log, (err, data) => {
-        res.end("hello from server")
-    })
-    // console.log(req);
-    console.log('new req resived');
-
-});
-
-myServer.listen(8000, () => console.log('server started'))
+app.listen(8000,()=>console.log("server started"))
+// const myServer = http.createServer(app)
+// myServer.listen(8000, () => console.log('server started'))
