@@ -29,6 +29,14 @@ app.get('/api/users/:id', (req, res) => {
     return res.json(user)
 })
 
+app.post('/api/users', (req, res) => {
+    //creat new user
+    return res.json({status:'pending'})
+})
 
+app.patch('/api/users/:id', (req, res) => {
+    //update user
+    return res.json({status:'pending'})
+})
 
 app.listen(PORT, () => console.log('server running at port : ', PORT))
