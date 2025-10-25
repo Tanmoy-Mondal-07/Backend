@@ -4,6 +4,21 @@ import users from './MOCK_DATA.json' assert { type: 'json' }
 const app = express()
 const PORT = 8000
 
+//middleware
+
+app.use(express.urlencoded({ extended: false }))
+
+app.use((req, res, next) => {
+    console.log("hlo from middleware 1");
+    req.myUserName = "username"
+    next()
+})
+
+app.use((req, res, next) => {
+    console.log("hlo from middleware 2 : ", req.myUserName);
+    next()
+})
+
 app.get('/api/users', (req, res) => {
     return res.json(users)
 })
@@ -31,12 +46,12 @@ app.get('/api/users/:id', (req, res) => {
 
 app.post('/api/users', (req, res) => {
     //creat new user
-    return res.json({status:'pending'})
+    return res.json({ status: 'pending' })
 })
 
 app.patch('/api/users/:id', (req, res) => {
     //update user
-    return res.json({status:'pending'})
+    return res.json({ status: 'pending' })
 })
 
 app.listen(PORT, () => console.log('server running at port : ', PORT))
