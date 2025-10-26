@@ -42,7 +42,7 @@ app.get('/users', (req, res) => {
 app.get('/api/users/:id', (req, res) => {
     const { id } = req.params
     const user = users.find((user) => user.id == id)
-    return res.json(user)
+    return res.status(201).json(user)
 })
 
 app.post('/api/users', (req, res) => {
