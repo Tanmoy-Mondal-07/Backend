@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/api/users', (req, res) => {
+    res.setHeader("x-myname","name") //als add "x-" in custom headers , for good prs8
     return res.json(users)
 })
 
