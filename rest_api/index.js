@@ -78,8 +78,16 @@ app.get('/api/users/:id', (req, res) => {
     return res.status(201).json(user)
 })
 
-app.post('/api/users', (req, res) => {
+app.post('/api/users', async (req, res) => {
     //creat new user
+
+    const result = await User.create({
+        firstName: body.first_name,
+        lastName: body.last_name,
+        email: body.email,
+        gender: body.gender
+    })
+    console.log(result);
     return res.json({ status: 'pending' })
 })
 
