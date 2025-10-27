@@ -1,8 +1,41 @@
 import express from 'express'
 import users from './MOCK_DATA.json' assert { type: 'json' }
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express()
 const PORT = 8000
+
+// mongoose
+//     .connect(process.env.MONGODB_URI)
+//     .then(()=>console.log("mongoo connected"))
+//     .catch((err)=>console.log(err))
+
+//schema
+const userSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    joTitle: {
+        type: String,
+    },
+    gender: {
+        type: String
+    }
+})
+
+const User = mongoose.model("user", userSchema)
 
 //middleware
 
@@ -20,7 +53,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/api/users', (req, res) => {
-    res.setHeader("x-myname","name") //als add "x-" in custom headers , for good prs8
+    res.setHeader("x-myname", "name") //als add "x-" in custom headers , for good prs8
     return res.json(users)
 })
 
