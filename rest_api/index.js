@@ -4,6 +4,7 @@ import { User } from './models/User'
 import dotenv from 'dotenv'
 import userRouter from './routes/user'
 import { connectMongo } from './connection'
+import { logreqres } from './middleWares/index'
 
 
 dotenv.config()
