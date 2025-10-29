@@ -1,10 +1,12 @@
 import express from 'express'
+import { handelGetAllUser } from '../controllers/user'
 
 const router = express.router();
 
 router.get('/api/users', (req, res) => {
-    res.setHeader("x-myname", "name") //als add "x-" in custom headers , for good prs8
-    return res.json(users)
+    // res.setHeader("x-myname", "name") //als add "x-" in custom headers , for good prs8
+    // return res.json(users)
+
 })
 
 app.get('/', (req, res) => {

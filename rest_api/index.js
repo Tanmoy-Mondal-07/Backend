@@ -4,7 +4,7 @@ import { User } from './models/User'
 import dotenv from 'dotenv'
 import userRouter from './routes/user'
 import { connectMongo } from './connection'
-import { logreqres } from './middleWares/index'
+import { logrequest } from './middleWares'
 
 
 dotenv.config()
@@ -22,10 +22,7 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use((req, res, next) => {
-    console.log("hlo from middleware 2 : ", req.myUserName);
-    next()
-})
+app.use(logrequest('log.txt'))
 
 app.get('/api/users', (req, res) => {
     res.setHeader("x-myname", "name") //als add "x-" in custom headers , for good prs8
