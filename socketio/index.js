@@ -10,6 +10,11 @@ const io = new Server(server)
 //socket io
 io.on('connection', (socket) => {
     console.log("a new user has connected", socket.id);
+    socket.on('user-message', (message) => {
+        io.emit("message",message)
+        console.log(message);
+    })
+    // console.log("------------------------------------------------------",socket);
 })
 
 app.use(express.static(path.resolve('./public')))
